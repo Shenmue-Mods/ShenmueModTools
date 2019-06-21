@@ -51,6 +51,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_TAD = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_MurmurHash2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_MurmurHash = new System.Windows.Forms.TextBox();
             this.checkBox_SingleHash = new System.Windows.Forms.CheckBox();
             this.textBox_Hash2 = new System.Windows.Forms.TextBox();
             this.textBox_Hash1 = new System.Windows.Forms.TextBox();
@@ -59,9 +62,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_Filepath = new System.Windows.Forms.TextBox();
             this.button_CreateTAD = new System.Windows.Forms.Button();
-            this.textBox_MurmurHash = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox_MurmurHash2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button_SelectFolder = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -165,6 +167,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.groupBox_ModelDump);
             this.groupBox5.Controls.Add(this.checkBox_DumpModels);
             this.groupBox5.Controls.Add(this.checkBox_FullExtract);
@@ -359,6 +362,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.button_SelectFolder);
             this.groupBox2.Controls.Add(this.textBox_MurmurHash2);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.textBox_MurmurHash);
@@ -375,6 +379,35 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "File Properties";
+            // 
+            // textBox_MurmurHash2
+            // 
+            this.textBox_MurmurHash2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_MurmurHash2.Location = new System.Drawing.Point(92, 176);
+            this.textBox_MurmurHash2.Name = "textBox_MurmurHash2";
+            this.textBox_MurmurHash2.ReadOnly = true;
+            this.textBox_MurmurHash2.Size = new System.Drawing.Size(482, 20);
+            this.textBox_MurmurHash2.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 153);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "MurmurHash2:";
+            // 
+            // textBox_MurmurHash
+            // 
+            this.textBox_MurmurHash.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_MurmurHash.Location = new System.Drawing.Point(92, 150);
+            this.textBox_MurmurHash.Name = "textBox_MurmurHash";
+            this.textBox_MurmurHash.Size = new System.Drawing.Size(482, 20);
+            this.textBox_MurmurHash.TabIndex = 14;
+            this.textBox_MurmurHash.TextChanged += new System.EventHandler(this.textBox_MurmurHash_TextChanged);
             // 
             // checkBox_SingleHash
             // 
@@ -457,34 +490,24 @@
             this.button_CreateTAD.UseVisualStyleBackColor = true;
             this.button_CreateTAD.Click += new System.EventHandler(this.button_CreateTAD_Click);
             // 
-            // textBox_MurmurHash
+            // button1
             // 
-            this.textBox_MurmurHash.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_MurmurHash.Location = new System.Drawing.Point(92, 150);
-            this.textBox_MurmurHash.Name = "textBox_MurmurHash";
-            this.textBox_MurmurHash.Size = new System.Drawing.Size(482, 20);
-            this.textBox_MurmurHash.TabIndex = 14;
-            this.textBox_MurmurHash.TextChanged += new System.EventHandler(this.textBox_MurmurHash_TextChanged);
+            this.button1.Location = new System.Drawing.Point(311, 23);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // button_SelectFolder
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 153);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "MurmurHash2:";
-            // 
-            // textBox_MurmurHash2
-            // 
-            this.textBox_MurmurHash2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_MurmurHash2.Location = new System.Drawing.Point(92, 176);
-            this.textBox_MurmurHash2.Name = "textBox_MurmurHash2";
-            this.textBox_MurmurHash2.ReadOnly = true;
-            this.textBox_MurmurHash2.Size = new System.Drawing.Size(482, 20);
-            this.textBox_MurmurHash2.TabIndex = 16;
+            this.button_SelectFolder.Location = new System.Drawing.Point(92, 202);
+            this.button_SelectFolder.Name = "button_SelectFolder";
+            this.button_SelectFolder.Size = new System.Drawing.Size(136, 23);
+            this.button_SelectFolder.TabIndex = 17;
+            this.button_SelectFolder.Text = "Select Folder...";
+            this.button_SelectFolder.UseVisualStyleBackColor = true;
+            this.button_SelectFolder.Click += new System.EventHandler(this.button_SelectFolder_Click);
             // 
             // TADControl
             // 
@@ -554,5 +577,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox_MurmurHash;
         private System.Windows.Forms.TextBox textBox_MurmurHash2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_SelectFolder;
     }
 }

@@ -193,5 +193,77 @@ namespace ShenmueHDArchiver.Controls
             byte[] buffer = Encoding.ASCII.GetBytes(textBox_MurmurHash.Text);
             textBox_MurmurHash2.Text = String.Format("{0:X8}", MurmurHash2.Hash(buffer, (uint)buffer.Length));
         }
+
+        private List<string> GetFiles(string folder)
+        {
+            List<string> result = new List<string>();
+            result.AddRange(Directory.GetFiles(folder));
+            foreach (var dir in Directory.GetDirectories(folder))
+            {
+                result.AddRange(GetFiles(dir));
+            }
+            return result;
+        }
+
+        private void button_SelectFolder_Click(object sender, EventArgs e)
+        {
+            VistaFolderBrowserDialog folderDialog = new VistaFolderBrowserDialog();
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                string folder = folderDialog.SelectedPath;
+                List<string> files = GetFiles(folder);
+                List<TADEntry> entries = new List<TADEntry>();
+
+                foreach (var file in files)
+                {
+                    FileHash hash;
+                    string f = file.Replace(folder, "");
+
+                    hash = MurmurHash2.GetFileHash(f, true);
+                    Console.WriteLine("{0} -> {1} : {2} -> {3}", hash.FilePath, hash.FilePathWithHash, hash.Hash.ToString("x8"), hash.FinalHash.ToString("x8"));
+
+                    FileInfo fileInfo = new FileInfo(file);
+                    TADEntry entry = new TADEntry();
+                    entry.FilePath = file;
+                    entry.FileName = file;
+                    entry.FileSize = (uint)fileInfo.Length;
+                    entry.Index = 0;
+                    entry.FirstHash = hash.FinalHash;
+                    entry.SecondHash = hash.FilePathHash;
+                    entries.Add(entry);
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "TAD File (*.tad)|*.tad";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string tadFilepath = saveFileDialog.FileName;
+                    string tacFilepath = Path.ChangeExtension(tadFilepath, ".tac");
+
+                    TAD tad = new TAD();
+                    tad.FilePath = tadFilepath;
+                    foreach (TADEntry entry in entries)
+                    {
+                        tad.Entries.Add(entry);
+                    }
+                    TAC tac = new TAC();
+                    tac.TAD = tad;
+
+                    LoadingDialog loadingDialog = new LoadingDialog();
+                    loadingDialog.SetProgessable(tac);
+                    Thread thread = new Thread(delegate () {
+                        tac.Pack(tacFilepath);
+                    });
+                    loadingDialog.ShowDialog(thread);
+
+                    tad.UnixTimestamp = DateTime.Now;
+                    tad.Write(tadFilepath);
+
+                }
+            }
+
+            
+        }
     }
 }
