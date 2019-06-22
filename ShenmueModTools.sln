@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShenmueModelEditor", "Shenm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShenmueDKSharp", "ShenmueDKSharp\ShenmueDKSharp.csproj", "{68CA6FDA-E029-4247-9229-C3A75DFA9F8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShenmueTextureOverride", "ShenmueTextureOverride\ShenmueTextureOverride.csproj", "{590D3D0C-3CB0-480D-A06B-D20792D71A6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{68CA6FDA-E029-4247-9229-C3A75DFA9F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68CA6FDA-E029-4247-9229-C3A75DFA9F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68CA6FDA-E029-4247-9229-C3A75DFA9F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{590D3D0C-3CB0-480D-A06B-D20792D71A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{590D3D0C-3CB0-480D-A06B-D20792D71A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{590D3D0C-3CB0-480D-A06B-D20792D71A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{590D3D0C-3CB0-480D-A06B-D20792D71A6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
